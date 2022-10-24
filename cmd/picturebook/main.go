@@ -21,7 +21,6 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-	_ "sync"
 	"sync/atomic"
 )
 
@@ -37,6 +36,8 @@ func main() {
 	desc_modes := fmt.Sprintf("Specify how query filtering should be evaluated. Valid modes are: %s", valid_modes)
 
 	query_mode := flag.String("query-mode", query.QUERYSET_MODE_ALL, desc_modes)
+
+	filename := flag.String("filename", "picturebook.pdf", "The (relative) name of the final PDF file.")
 
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage:\n")
@@ -56,8 +57,6 @@ func main() {
 	}
 
 	defer bucket.Close()
-
-	// mu := new(sync.RWMutex)
 
 	cwd, err := os.Getwd()
 
@@ -83,6 +82,11 @@ func main() {
 	}
 
 	pb_opts.Target = pb_bucket
+	// pb_opts.Orientation = "L"
+	pb_opts.Width = 9
+	pb_opts.Height = 7
+	pb_opts.FillPage = true
+	pb_opts.Verbose = false
 
 	pb, err := picturebook.NewPictureBook(ctx, pb_opts)
 
@@ -106,8 +110,13 @@ func main() {
 		}
 
 		if pagenum > 10 {
-			return nil
+			// return nil
 		}
+
+		title_rsp := gjson.GetBytes(rec.Body, "item.title")
+		id_rsp := gjson.GetBytes(rec.Body, "item.id")
+
+		caption := fmt.Sprintf("%s #%s", title_rsp.String(), id_rsp.String())
 
 		url_rsp := gjson.GetBytes(rec.Body, "item.service_medium")
 		im_url := url_rsp.String()
@@ -157,7 +166,7 @@ func main() {
 			Source:  im_fname,
 			Path:    im_fname,
 			Bucket:  im_bucket,
-			Caption: im_fname,
+			Caption: caption,
 		}
 
 		pg := atomic.AddInt64(&pagenum, 1)
@@ -168,7 +177,7 @@ func main() {
 			return fmt.Errorf("Failed to add picture for %s, %w", im_url, err)
 		}
 
-		log.Println("OKAY", pg, im_url)
+		log.Printf("Added %s (%s) on page %d\n", caption, im_url, pg)
 		return nil
 	}
 
@@ -206,7 +215,7 @@ func main() {
 		}
 	}
 
-	err = pb.Save(ctx, "picturebook.pdf")
+	err = pb.Save(ctx, *filename)
 
 	if err != nil {
 		log.Fatalf("Failed to save picturebook, %v", err)
