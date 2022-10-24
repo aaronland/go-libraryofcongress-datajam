@@ -232,6 +232,10 @@ github.com/microcosm-cc/exifutil
 # github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
 ## explicit
 github.com/nfnt/resize
+# github.com/paulmach/orb v0.7.1
+## explicit; go 1.15
+github.com/paulmach/orb
+github.com/paulmach/orb/geojson
 # github.com/rainycape/unidecode v0.0.0-20150907023854-cb7f23ec59be
 ## explicit
 github.com/rainycape/unidecode

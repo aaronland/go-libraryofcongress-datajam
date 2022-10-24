@@ -7,6 +7,7 @@ require (
 	github.com/aaronland/go-jsonl v0.0.18
 	github.com/aaronland/go-picturebook v0.6.2
 	github.com/aws/aws-sdk-go v1.44.121
+	github.com/paulmach/orb v0.7.1
 	github.com/tidwall/gjson v1.14.3
 	gocloud.dev v0.27.0
 )
