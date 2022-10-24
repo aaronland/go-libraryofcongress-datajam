@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/aaronland/go-json-query v0.1.3
-	github.com/aaronland/go-jsonl v0.0.17
+	github.com/aaronland/go-jsonl v0.0.18
 	github.com/aws/aws-sdk-go v1.44.121
 	gocloud.dev v0.27.0
 )

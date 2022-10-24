@@ -9,7 +9,7 @@ import (
 	"github.com/aaronland/go-json-query"
 	jw "github.com/aaronland/go-jsonl/walk"
 	"github.com/aaronland/go-libraryofcongress-datajam"
-	"github.com/aaronland/go-libraryofcongress-datajam/walk"	
+	"github.com/aaronland/go-libraryofcongress-datajam/walk"
 	_ "gocloud.dev/blob/fileblob"
 	_ "gocloud.dev/blob/s3blob"
 	"io"
@@ -143,50 +143,50 @@ func main() {
 		records := make([][]byte, 0)
 
 		/*
-		if *as_oembed {
-
-		var object map[string]interface{}
-			err = json.Unmarshal(rec.Body, &object)
-
-			if err != nil {
-				log.Println(err)
-				return err
-			}
-
 			if *as_oembed {
 
-				oembed_records, err := oembed.OEmbedRecordsFromOpenAccessRecord(object)
+			var object map[string]interface{}
+				err = json.Unmarshal(rec.Body, &object)
 
 				if err != nil {
-					// log.Printf("Unable to construct oembed records from object '%s': %v\n", object.Id, err)
-					return nil
+					log.Println(err)
+					return err
 				}
 
-				for _, o_rec := range oembed_records {
+				if *as_oembed {
 
-					body, err := json.Marshal(o_rec)
+					oembed_records, err := oembed.OEmbedRecordsFromOpenAccessRecord(object)
 
 					if err != nil {
-						return err
+						// log.Printf("Unable to construct oembed records from object '%s': %v\n", object.Id, err)
+						return nil
 					}
 
-					records = append(records, body)
+					for _, o_rec := range oembed_records {
+
+						body, err := json.Marshal(o_rec)
+
+						if err != nil {
+							return err
+						}
+
+						records = append(records, body)
+					}
+
+				} else {
+					records = append(records, rec.Body)
 				}
+
+				records = append(records, rec.Body)
 
 			} else {
 				records = append(records, rec.Body)
 			}
 
-			records = append(records, rec.Body)
-			
-		} else {
-			records = append(records, rec.Body)
-		}
-		
 		*/
 
 		records = append(records, rec.Body)
-		
+
 		return write(ctx, records...)
 	}
 

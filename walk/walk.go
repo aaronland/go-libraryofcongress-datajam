@@ -5,7 +5,7 @@ import (
 	"github.com/aaronland/go-json-query"
 	jw "github.com/aaronland/go-jsonl/walk"
 	"gocloud.dev/blob"
-	_ "log"
+	"log"
 )
 
 type WalkOptions struct {
@@ -31,11 +31,14 @@ func WalkBucket(ctx context.Context, opts *WalkOptions, bucket *blob.Bucket) err
 	jw_record_ch := make(chan *jw.WalkRecord)
 	jw_error_ch := make(chan *jw.WalkError)
 
+	done_ch := make(chan bool)
+
 	jw_opts := &jw.WalkOptions{
 		URI:           opts.URI,
 		Workers:       opts.Workers,
 		RecordChannel: jw_record_ch,
 		ErrorChannel:  jw_error_ch,
+		DoneChannel:   done_ch,
 		FormatJSON:    opts.FormatJSON,
 		ValidateJSON:  opts.ValidateJSON,
 		QuerySet:      opts.QuerySet,
@@ -96,6 +99,7 @@ func WalkLibraryofCongressRecord(ctx context.Context, opts *WalkOptions, bucket 
 		for {
 			select {
 			case <-ctx.Done():
+				log.Println("DONE")
 				return
 			case err := <-jw_error_ch:
 				cb(ctx, nil, err)
