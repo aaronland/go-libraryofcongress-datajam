@@ -74,6 +74,19 @@ For example:
 * [examples/to-geocode.csv](examples/to-geocode.csv)
 * [examples/loc-geocoded.csv](examples/loc-geocoded.csv)
 
+Future work will involve deriving Library of Congress identifiers for place (not already included in records) from geocoded results. For example, given a geocoded row like this:
+
+```
+2019633162,canada,85633041
+```
+
+We can derive the Library of Congress identifier for that place using the Who's On First concordances for Canada (`85633041`) like this:
+
+```
+$> curl -s 'https://data.whosonfirst.org/select/85633041?select=properties.wof:concordances.loc:id'
+"n79007233"
+```
+
 ## See also
 
 * https://github.com/aaronland/go-jsonl
