@@ -61,7 +61,7 @@ For example:
 
 ### to-geocode
 
-Create a CSV file derived from one or more records from a line-seperated JSON file (see above) with location information to be geocoded (to determine canonical location identifiers).
+Create a CSV file derived from one or more records from a line-seperated JSON file (see above) with location information to be geocoded (to determine canonical location identifiers like a [Who's On First](https://whosonfirst.org) ID).
 
 ```
 $> go run -mod vendor cmd/to-geocode/main.go \
@@ -71,8 +71,8 @@ $> go run -mod vendor cmd/to-geocode/main.go \
 
 For example:
 
-* [examples/to-geocode.csv](examples/to-geocode.csv]
-* [examples/loc-geocoded.csv](examples/loc-geocoded.csv]
+* [examples/to-geocode.csv](examples/to-geocode.csv)
+* [examples/loc-geocoded.csv](examples/loc-geocoded.csv)
 
 ## See also
 
