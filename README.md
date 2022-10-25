@@ -62,7 +62,7 @@ $> go run -mod vendor cmd/emit/main.go \
 
 ### picturebook
 
-Create a PDF file containing images derived from one or more records from a line-seperated JSON file (see above), optionally filtering on zero or more properties.
+Create a PDF file containing images derived from one or more records from a line-seperated JSON data (see above), optionally filtering on zero or more properties.
 
 ```
 $> go run -mod vendor cmd/picturebook/main.go \
@@ -77,7 +77,7 @@ For example:
 
 ### featurecollection
 
-Create a GeoJSON file derived from one or more records from a line-seperated JSON file (see above) with location information.
+Create a GeoJSON file derived from one or more records from a line-seperated JSON data (see above) with location information.
 
 ```
 $> go run -mod vendor cmd/featurecollection/main.go \
@@ -92,7 +92,7 @@ For example:
 
 ### to-geocode
 
-Create a CSV file derived from one or more records from a line-seperated JSON file (see above) with location information to be geocoded (to determine canonical location identifiers like a [Who's On First](https://whosonfirst.org) ID).
+Create a CSV file derived from one or more records from a line-seperated JSON data (see above) with location information to be geocoded (to determine canonical location identifiers like a [Who's On First](https://whosonfirst.org) ID).
 
 ```
 $> go run -mod vendor cmd/to-geocode/main.go \
