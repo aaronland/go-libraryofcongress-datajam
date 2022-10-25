@@ -105,7 +105,11 @@ For example:
 * [examples/to-geocode.csv](examples/to-geocode.csv)
 * [examples/loc-geocoded.csv](examples/loc-geocoded.csv) (produced using the [Placeholder](https://github.com/pelias/placeholder) geocoder)
 
-Future work will involve deriving Library of Congress identifiers for place (not already included in records) from geocoded results. For example, given a geocoded row like this:
+## Future work
+
+### Library of Congress identifiers for place
+
+Derive Library of Congress identifiers for place (not already included in records) from geocoded results. For example, given a geocoded row like this:
 
 ```
 2019633162,canada,85633041
@@ -117,6 +121,12 @@ We can derive the Library of Congress identifier for that place using the Who's 
 $> curl -s 'https://data.whosonfirst.org/select/85633041?select=properties.wof:concordances.loc:id'
 "n79007233"
 ```
+
+### Geotagging UI
+
+* Index records in a document store like DynamoDB
+* Create simple web interface to iterate through records and provide UI for geotagging using NYPL's [Leaflet.GeotagPhoto](https://github.com/nypl-spacetime/Leaflet.GeotagPhoto) plugin
+* Determine how and where to store geotagging information
 
 ## See also
 
