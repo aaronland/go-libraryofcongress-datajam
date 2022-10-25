@@ -72,7 +72,7 @@ $> go run -mod vendor cmd/to-geocode/main.go \
 For example:
 
 * [examples/to-geocode.csv](examples/to-geocode.csv)
-* [examples/loc-geocoded.csv](examples/loc-geocoded.csv)
+* [examples/loc-geocoded.csv](examples/loc-geocoded.csv) (produced using the [Placeholder](https://github.com/pelias/placeholder) geocoder)
 
 Future work will involve deriving Library of Congress identifiers for place (not already included in records) from geocoded results. For example, given a geocoded row like this:
 
