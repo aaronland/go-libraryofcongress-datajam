@@ -2,3 +2,8 @@
 bin
 *.pdf
 *.attrs
+*.csv
+*.geojson
+!examples/*.csv
+!examples/*.pdf
+!examples/*.geojson
