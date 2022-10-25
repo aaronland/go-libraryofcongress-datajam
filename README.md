@@ -27,6 +27,37 @@ $> go run -mod vendor cmd/emit/main.go \
 	-json \
 	-format-json \
 	data
+
+[{
+  "access_restricted": false,
+  "aka": [
+    "http://www.loc.gov/pictures/collection/stereo/item/2015651792/",
+    "http://hdl.loc.gov/loc.pnp/stereo.2s04646",
+    "http://www.loc.gov/item/2015651792/",
+    "http://www.loc.gov/pictures/item/2015651792/",
+    "http://hdl.loc.gov/loc.pnp/stereo.1s04646",
+    "http://www.loc.gov/resource/stereo.1s04646/",
+    "http://www.loc.gov/resource/stereo.2s04646/",
+    "http://lccn.loc.gov/2015651792"
+  ],
+
+  ...and so on
+
+  "subject": [
+    "richmond",
+    "photographic prints",
+    "virginia",
+    "civil war",
+    "united states",
+    "stereographs",
+    "history"
+  ],
+  "timestamp": "2021-09-04T14:18:51.417Z",
+  "title": "State Capitol",
+  "unrestricted": true,
+  "url": "https://www.loc.gov/item/2015651792/"
+}
+]
 ```
 
 ### picturebook
